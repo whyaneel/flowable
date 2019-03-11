@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef">
-  <process id="Asset-Initiation-Process" name="Asset Initiation Process" isExecutable="true">
+  <process id="BoilerplateGuru-InitiationProcess" name="Boilerplate Guru Asset Initiation Process" isExecutable="true">
     <startEvent id="startEvent1" name="Start"></startEvent>
     <userTask id="sid-27D557C8-6499-4AFA-BA6A-BE0F97612AB9" name="PM Maker Task" flowable:candidateGroups="PRODUCT_MANAGER_MAKER">
       <extensionElements>
@@ -53,8 +53,8 @@
     <sequenceFlow id="sid-63071328-CB83-4BE3-92FC-F32E0CDE8DD8" sourceRef="sid-3D958E35-C78B-4BF1-890E-02E7FEAE5BE2" targetRef="sid-32ACDF86-5F70-4970-8BEC-73FF5F921BA4"></sequenceFlow>
     <sequenceFlow id="sid-65D2B571-AF26-49B3-AAF4-15382CDE9C19" name="Success" sourceRef="sid-32ACDF86-5F70-4970-8BEC-73FF5F921BA4" targetRef="sid-E5D33FBC-FE7C-4EAF-B7B5-A44B29658098"></sequenceFlow>
   </process>
-  <bpmndi:BPMNDiagram id="BPMNDiagram_Asset-Initiation-Process">
-    <bpmndi:BPMNPlane bpmnElement="Asset-Initiation-Process" id="BPMNPlane_Asset-Initiation-Process">
+  <bpmndi:BPMNDiagram id="BPMNDiagram_BoilerplateGuru-InitiationProcess">
+    <bpmndi:BPMNPlane bpmnElement="BoilerplateGuru-InitiationProcess" id="BPMNPlane_BoilerplateGuru-InitiationProcess">
       <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
         <omgdc:Bounds height="30.0" width="30.0" x="60.0" y="155.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>

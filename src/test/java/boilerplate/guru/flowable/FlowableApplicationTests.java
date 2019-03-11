@@ -43,7 +43,7 @@ public class FlowableApplicationTests {
 		check_WorkflowDeployed();
 
 		requestHasThisRole = Role.PRODUCT_MANAGER_MAKER;
-		String processInstanceId = initAssetCreation("Asset-Initiation-Process");
+		String processInstanceId = initAssetCreation("BoilerplateGuru-InitiationProcess");
 
 
 		pmMaker_FillTheForm();
