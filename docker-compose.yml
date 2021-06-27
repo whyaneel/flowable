@@ -1,0 +1,42 @@
+version: "3"
+services:
+  flowable:
+    container_name: flowable
+    image: flowable/all-in-one
+    ports:
+      - 8080:8080
+
+  database:
+    image: postgres:latest
+    container_name: database
+    ports:
+      - 5432:5432
+    command: postgres -c 'max_connections=200'
+    environment:
+      - POSTGRES_DB=ONE_TASK_DB
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  one-task:
+    container_name: one-task
+    image: one-task-app:latest
+    environment:
+      JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=7090 -Xms256m -Xmx512m"
+      SERVER_PORT: 9090
+      DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQL9Dialect
+      DATABASE_URI: jdbc:postgresql://database:5432/ONE_TASK_DB
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_DRIVER_CLASS_NAME: org.postgresql.Driver
+      ERROR_LEVEL_SPRING: "INFO"
+      ERROR_LEVEL_APP: "INFO"
+      ERROR_LEVEL_HIBERNATE: "INFO"
+      LOG_PATH: "/opt/logs/"
+      DB_MIN_IDLE: 10
+      DB_MAX_POOL_SIZE: 50
+      DB_IDLE_TIMEOUT: 30000
+      DB_MAX_LIFETIME: 2000000
+      DB_CONNECTION_TIMEOUT: 30000
+    ports:
+      - 9090:9090
+      - 7090:7090
