@@ -72,14 +72,17 @@ We've modelled a **OneTask** process in Flowable Modeller with Start Event, Serv
 
 -  And Copied the **OneTask.bpmn20.xml** to **src/main/resources/processes** folder for auto deployment by flowable starter
 
-- **application.properties** has property **DATABASE_PLATFORM** as **org.hibernate.dialect.PostgreSQL9Dialect** to externalise database to **postgres**, yes!! that simple.
+- **application.properties** has property **DATABASE_DRIVER_CLASS_NAME** as **org.postgresql.Driver** to externalise database to **postgres**, yes!! that simple.
 
 ## w/ Event Driven Architecture
 [Pending] Kafka-native approach (kafka, zookeeper)
 
 ## Bonus 
-Have a look at Flowable Enterprise Architecture
-[Pending] Comparision
+Have a look at Flowable Engage Architecture
+
+![Flowable Engage](https://github.com/whyaneel/flowable/blob/master/readme/flowable-engage-arch.png?raw=true)
+
+Grab more details at Source: https://documentation.flowable.com/engage-install/3.5.0/110-overview.html
 
 ## You've questions?
 Signup on public forum https://forum.flowable.org/, otherwise I'm happy to help.
