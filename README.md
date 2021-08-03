@@ -70,12 +70,36 @@ git checkout onetaskapp
 We've modelled a **OneTask** process in Flowable Modeller with Start Event, Service Task, End Event. And downloaded the file as **OneTask.bpmn20.xml**.
 ![OneTask Process](https://github.com/whyaneel/flowable/blob/onetaskapp/readme/OneTask_BPMN_Model.png?raw=true)
 
--  And Copied the **OneTask.bpmn20.xml** to **src/main/resources/processes** folder for auto deployment by flowable starter
+-  And Copied the **OneTask.bpmn20.xml** to **src/main/resources/processes** folder, sothat FlowableAutoConfiguration will deploy them, which will be picked up by ProcessEngine.
 
 - **application.properties** has property **DATABASE_DRIVER_CLASS_NAME** as **org.postgresql.Driver** to externalise database to **postgres**, yes!! that simple.
 
+- For the trigger, we wrote a simple Rest Controller 
+
 ## w/ Event Driven Architecture
-[Pending] Kafka-native approach (kafka, zookeeper)
+
+We've modelled  **OneTaskKafkaConsumer** process in Flowable Modeller with Start Event Registry Event, Service Task, End Event. 
+- Start Event Registry Event, which waits for a message on topic configured to trigger the process automatically. 
+- Also, mapped Service Task (LogHelloTask) with a Spring Bean using delegateExpression **${logHelloTask}** which implements Flowable's **JavaDelegate**.
+
+Here is the **OneTaskKafkaConsumer** BPMN Process
+
+![Consumer_OneTaskKafkaConsumerProcess__StartEventRegistryEvent_Details](https://github.com/whyaneel/flowable/blob/onetaskapp-kafka/readme/Consumer_OneTaskKafkaConsumerProcess__StartEventRegistryEvent_Details.png?raw=true)
+
+We have kept these event and channel files under **/resources/eventregistry/** folder, sothat FlowableAutoConfiguration will deploy them, which will be picked up by EventRegistryEngine.
+- Event: oneTaskKafkaConsume.event
+- Channel: oneTaskKafkaInbound.channel (Topic as ONE_TASK_TOPIC_JSON)
+- Consumer_MappingsFromEventPayload: (We do this in Flowable Modeler)
+
+![Consumer_MappingsFromEventPayload](https://github.com/whyaneel/flowable/blob/onetaskapp-kafka/readme/Consumer_MappingsFromEventPayload.png?raw=true)
+
+**Kafka-native Approach** with Single Node Kafka Cluster and by updating pom.xml, application.properties
+ - **pom.xml** will  have dependency **org.springframework.kafka:spring-kafka**
+ - **application.properties** has property **BOOTSTRAP_SERVER** as **kafka:9092** to communicate natively with **kafka**, yes!! that simple again.
+ 
+For the trigger, instead of Rest Controller here we want to use a different approach.
+- You can manually produce a message to the topic ONE_TASK_TOPIC_JSON from Kafka Console
+- Mocking Produce Message with a additional Flowable Process
 
 ## Bonus 
 Have a look at Flowable Engage Architecture
