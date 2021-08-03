@@ -1,0 +1,18 @@
+{
+  "key": "oneTaskKafkaConsumeEvent",
+  "name": "OneTask Process Event",
+  "inboundChannelKeys": [
+    "oneTaskKafkaInboundChannel"
+  ],
+  "correlationParameters": [],
+  "payload": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "githubHandle",
+      "type": "string"
+    }
+  ]
+}

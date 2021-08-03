@@ -1,0 +1,9 @@
+{
+  "key": "oneTaskKafkaOutboundChannel",
+  "name": "OneTask Kafka Outbound Channel",
+  "description": "OneTask Kafka Outbound Channel",
+  "channelType": "outbound",
+  "type": "kafka",
+  "serializerType": "json",
+  "topic": "ONE_TASK_TOPIC_JSON"
+}

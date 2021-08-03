@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef">
+  <process id="OneTaskKafkaProducer" name="OneTaskKafkaProducer" isExecutable="true">
+    <documentation>Whenever we trigger this process the Send Event Registry Task produces a message to a topic defined and the payload can be from previous tasks or parameters from Job Initiation or custom data that is derived in services. So, It acts as a Producer.</documentation>
+    <startEvent id="startEvent1" name="Trigger By Console" flowable:formFieldValidation="true"></startEvent>
+    <serviceTask id="sid-23D2F6BF-D39D-4B20-A5C8-54924B908A83" name="Produce Message" flowable:type="send-event">
+      <extensionElements>
+        <flowable:eventType><![CDATA[oneTaskKafkaProduceEvent]]></flowable:eventType>
+        <flowable:eventInParameter sourceExpression="${githubUsername}" target="githubHandle" targetType="string"></flowable:eventInParameter>
+        <flowable:eventInParameter sourceExpression="${fullName}" target="name" targetType="string"></flowable:eventInParameter>
+        <flowable:channelKey xmlns:flowable="http://flowable.org/bpmn"><![CDATA[oneTaskKafkaOutboundChannel]]></flowable:channelKey>
+        <flowable:channelType xmlns:flowable="http://flowable.org/bpmn"><![CDATA[kafka]]></flowable:channelType>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="sid-1B990595-63AD-483D-8458-556E89DDFC42" sourceRef="startEvent1" targetRef="sid-23D2F6BF-D39D-4B20-A5C8-54924B908A83"></sequenceFlow>
+    <endEvent id="sid-25FE4BD7-1A1C-452A-B712-CC663B960B6F" name="End"></endEvent>
+    <sequenceFlow id="sid-18987301-B708-450F-8333-ABE48F51DC0C" sourceRef="sid-23D2F6BF-D39D-4B20-A5C8-54924B908A83" targetRef="sid-25FE4BD7-1A1C-452A-B712-CC663B960B6F"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_OneTaskKafkaProducer">
+    <bpmndi:BPMNPlane bpmnElement="OneTaskKafkaProducer" id="BPMNPlane_OneTaskKafkaProducer">
+      <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
+        <omgdc:Bounds height="30.0" width="30.0" x="100.0" y="163.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-23D2F6BF-D39D-4B20-A5C8-54924B908A83" id="BPMNShape_sid-23D2F6BF-D39D-4B20-A5C8-54924B908A83">
+        <omgdc:Bounds height="80.0" width="100.0" x="235.5" y="139.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-25FE4BD7-1A1C-452A-B712-CC663B960B6F" id="BPMNShape_sid-25FE4BD7-1A1C-452A-B712-CC663B960B6F">
+        <omgdc:Bounds height="28.0" width="28.0" x="465.5" y="165.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-18987301-B708-450F-8333-ABE48F51DC0C" id="BPMNEdge_sid-18987301-B708-450F-8333-ABE48F51DC0C">
+        <omgdi:waypoint x="335.44999999996986" y="179.0"></omgdi:waypoint>
+        <omgdi:waypoint x="465.5" y="179.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-1B990595-63AD-483D-8458-556E89DDFC42" id="BPMNEdge_sid-1B990595-63AD-483D-8458-556E89DDFC42">
+        <omgdi:waypoint x="129.94972263208624" y="178.08768183149914"></omgdi:waypoint>
+        <omgdi:waypoint x="235.49999999999585" y="178.7067448680352"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

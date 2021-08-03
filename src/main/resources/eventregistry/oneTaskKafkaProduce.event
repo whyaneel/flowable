@@ -1,0 +1,18 @@
+{
+  "key": "oneTaskKafkaProduceEvent",
+  "name": "OneTask Kafka Produce Event",
+  "inboundChannelKeys": [
+    "oneTaskKafkaOutboundChannel"
+  ],
+  "correlationParameters": [],
+  "payload": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "githubHandle",
+      "type": "string"
+    }
+  ]
+}

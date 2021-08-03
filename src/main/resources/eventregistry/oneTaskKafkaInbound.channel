@@ -1,0 +1,13 @@
+{
+  "groupId": "${consumer.group}",
+  "key": "oneTaskKafkaInboundChannel",
+  "name": "OneTask Kafka Inbound Channel",
+  "description": "OneTask Kafka Inbound Channel",
+  "channelType": "inbound",
+  "type": "kafka",
+  "deserializerType": "json",
+  "channelEventKeyDetection": {
+    "fixedValue": "oneTaskKafkaConsumeEvent"
+  },
+  "topics": ["ONE_TASK_TOPIC_JSON"]
+}

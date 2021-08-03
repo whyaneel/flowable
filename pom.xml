@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>flow.able.onetask</groupId>
-	<artifactId>one-task-app</artifactId>
+	<artifactId>one-task-app-kafka</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>one-task-app</name>
+	<name>one-task-app-kafka</name>
 	<description>Spring Boot App with Flowable with Postgres</description>
 	<properties>
 		<java.version>8</java.version>
@@ -28,6 +28,10 @@
 			<version>${flowable.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
@@ -39,7 +43,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -52,7 +56,7 @@
 				<version>2.5.0</version>
 				<configuration>
 					<to>
-						<image>one-task-app</image>
+						<image>one-task-app-kafka</image>
 					</to>
 				</configuration>
 			</plugin>
