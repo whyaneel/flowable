@@ -26,7 +26,10 @@ Wait, You can also extend with **Flowable Enterprise** features like
 - Maps Integration over Conversations
 - Reliability
 
-Please note that **Flowable Enterprise** comprises **Flowable Engage, Flowable Work, Flowable Orchestrate**
+Please note that **Flowable Enterprise** comprises of 3 products
+- **Flowable Engage**, lets you blend convenient informal chat (with WhatsApp, WeChat, LINE etc) with structured processes and/ or case management.
+- **Flowable Work**, lets you model your business processes through BPMN, CMMN, DMN and Flowable Forms. (Flowable Design, Forms, Control)
+- **Flowable Orchestrate**, is a set of open-source core engines that are compact and highly efficient.
 
 # Scope
 Limited to BPMN Engine, will focus to explain through code mostly, but wherever needed will add additional info to digest the fundamentals.
